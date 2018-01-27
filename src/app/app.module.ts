@@ -11,6 +11,7 @@ import { firebaseAppConfig } from '../config/firebase-config';
 import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
 import { SignupPage } from '../pages/signup/signup';
+import { UserService } from './../providers/user/user.service';
 
 
 
@@ -34,7 +35,8 @@ import { SignupPage } from '../pages/signup/signup';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService
   ]
 })
 export class AppModule {}
