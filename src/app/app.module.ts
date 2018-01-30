@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { AngularFireModule } from 'angularfire2';
 
+import { AuthService } from '../providers/auth/auth.service';
 import { firebaseAppConfig } from '../config/firebase-config';
 import { HomePage } from '../pages/home/home';
 import { MyApp } from './app.component';
@@ -33,6 +34,7 @@ import { UserService } from './../providers/user/user.service';
     SignupPage
   ],
   providers: [
+    AuthService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

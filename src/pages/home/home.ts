@@ -28,7 +28,7 @@ export class HomePage {
   }
 
   onChatCreate(user: User): void {
-    console.log(user);
+    console.log(user);  
   }
   onSignup(): void{
     this.navCtrl.push(SignupPage)
