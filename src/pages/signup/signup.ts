@@ -39,16 +39,19 @@ export class SignupPage {
   
   onSubmit(): void{
 
-    let user: User = this.sigupForm.value;
+    let formUser = this.sigupForm.value;
 
     this.authService.createAuthUser({
-      email: user.email,
-      password: user.password
+      email: formUser.email,
+      password: formUser.password
     }).then((authstate: FirebaseAuthState) => {
 
-      this.userService.create(user)
+      delete formUser.password; //para não gravar no firebase
+      formUser.uid = authstate.auth.uid;
+
+      this.userService.create(formUser)
       .then(() => {
-      console.log("Usuario cadastrado com sucesso!!!");
+        console.log("Usuario cadastrado com sucesso!!!");
       
       });
 
