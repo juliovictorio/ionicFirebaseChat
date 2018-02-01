@@ -57,16 +57,16 @@ export class SignupPage {
       .then(() => {
         console.log("Usuario cadastrado com sucesso!!!");
         loading.dismiss();
-      }).catch((error: Error) =>{
-        console.log(error.message);
+      }).catch((error: any) =>{
+        console.log(error);
         loading.dismiss();
-        this.showAlert(error.message);
+        this.showAlert(error);
       });
 
-    }).catch((error: Error) => {
+    }).catch((error: any) => {
       console.log(error);
       loading.dismiss();
-      this.showAlert(error.message);
+      this.showAlert(error);
     });
   }
 
