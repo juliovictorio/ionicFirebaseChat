@@ -7,6 +7,7 @@ import 'rxjs/add/operator/first'
 import { FirebaseAuthState } from 'angularfire2/auth';
 
 import { AuthService } from './../../providers/auth/auth.service';
+import { HomePage } from '../home/home';
 import { User } from './../../models/user.model';
 import { UserService } from './../../providers/user/user.service';
 
@@ -68,6 +69,7 @@ export class SignupPage {
             this.userService.create(formUser)
               .then(() => {
                 console.log("Usuario cadastrado com sucesso!!!");
+                this.navCtrl.setRoot(HomePage);
                 loading.dismiss();
               }).catch((error: any) => {
                 console.log(error);
