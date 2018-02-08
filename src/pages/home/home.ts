@@ -4,9 +4,11 @@ import { NavController } from 'ionic-angular';
 
 import { FirebaseListObservable } from 'angularfire2';
 
+import { AuthService } from '../../providers/auth/auth.service';
 import { SignupPage } from '../signup/signup';
 import { User } from './../../models/user.model';
 import { UserService } from './../../providers/user/user.service';
+import { Promise } from 'firebase';
 
 @Component({
   selector: 'page-home',
@@ -17,10 +19,15 @@ export class HomePage {
   users: FirebaseListObservable<User[]>;
 
   constructor(
+    public authService : AuthService,
     public navCtrl: NavController,
     public userService: UserService
   ) {
 
+  }
+
+  ionViewCanEnter() : Promise<boolean>{
+    return this.authService.autenticated
   }
 
   ionViewDidLoad(){

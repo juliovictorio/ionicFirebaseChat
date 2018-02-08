@@ -19,11 +19,11 @@ export class SigninPage {
     public authService: AuthService,
     public formBuilder: FormBuilder,
     public loadingController: LoadingController,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams
-    ) {
+  ) {
 
-      //o ".group" recebe como parametro os campos do nosso formulário
+    //o ".group" recebe como parametro os campos do nosso formulário
     let emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
     this.siginForm = this.formBuilder.group({
@@ -39,8 +39,8 @@ export class SigninPage {
   onSubmit(): void {
     const loading: Loading = this.showLoading();
     this.authService.signinWithEmail(this.siginForm.value)
-      .then((isLogged : boolean) => {
-        if(isLogged){
+      .then((isLogged: boolean) => {
+        if (isLogged) {
           this.navCtrl.setRoot(HomePage);
           loading.dismiss();
         }
@@ -51,7 +51,7 @@ export class SigninPage {
       });
   }
 
-  onSignup(){
+  onSignup() {
     this.navCtrl.push(SignupPage);
   }
 
@@ -71,4 +71,22 @@ export class SigninPage {
     }).present();
   }
 
+  onHomePage(): void {
+    this.navCtrl.push(HomePage)
+      .then((hasAccess: boolean) => {
+        console.log('Autorizado: ', hasAccess);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  onLogout(): void {
+    this.authService.logout().then( (data) => {
+      console.log('usuario deslogado com sucesso!', data);
+    }).catch((err) => {
+      console.log(err);
+      
+    });
+  }
 }
