@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { UserService } from './../providers/user/user.service';
+import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 
 
 const firebaseAuthConfig = {
@@ -23,8 +24,9 @@ const firebaseAuthConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
+    CustomLoggedHeaderComponent,
     HomePage,
+    MyApp,
     SigninPage,
     SignupPage
   ],
