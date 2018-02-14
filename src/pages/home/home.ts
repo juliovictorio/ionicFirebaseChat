@@ -17,6 +17,7 @@ import { Promise } from 'firebase';
 export class HomePage {
 
   users: FirebaseListObservable<User[]>;
+  view : string = 'chats';
 
   constructor(
     public authService : AuthService,
